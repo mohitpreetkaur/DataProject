@@ -1,0 +1,153 @@
+<div class="about-container mt-5">
+<h1 class="about-title">About Us</h1>
+<p class="about-description">
+    We are passionate about Disney characters and wanted to create a platform to explore and learn more about them. This project is built to offer fans and enthusiasts a comprehensive database of Disney characters, their appearances, and other interesting details.
+</p>
+
+<h2 class="section-title">Project Purpose</h2>
+<p class="about-description">
+    Our project allows users to browse through various Disney characters, view their appearances in films, TV shows, and video games, and learn more about their background. To provide a personalized experience, we generate random user data, enabling users to “like” characters, creating a more interactive platform for exploring the Disney universe.
+</p>
+
+<h2 class="section-title">Data Sources</h2>
+<ul class="data-sources">
+    <li><strong>Disney Character API:</strong> This API provides information about various Disney characters, including their appearances in films, TV shows, and video games. We extract data such as character names, associated media, image URLs, and source URLs.</li>
+    <li><strong>Faker API (User Data):</strong> To simulate a real user experience, we use the Faker API to generate random user data, such as email addresses and names. This data helps create fake user profiles, allowing us to simulate interactions like "liking" Disney characters for a more personalized experience.</li>
+</ul>
+
+<h2 class="section-title">Data Seeding Process</h2>
+<p class="about-description">
+    We use a custom data seeding script to populate the database with character and user data. This script automates the process, ensuring that the database is filled with information from both the Disney Character API and Faker-generated user data. Here’s an overview of how the seeding process works:
+</p>
+
+<h3 class="table-title">1. Fetching Character Data</h3>
+<p class="about-description">
+    The script starts by retrieving data from the Disney Character API, extracting character details, including name, image URL, and associated media (films, TV shows, and video games). This information is structured as follows:
+</p>
+<ul class="data-process">
+    <li><strong>Name:</strong> The character’s name is stored for easy reference.</li>
+    <li><strong>Image URL:</strong> A URL to the character’s image, allowing us to display visuals on the platform.</li>
+    <li><strong>Films, TV Shows, and Video Games:</strong> Each character’s appearances across different media types are stored in related tables, creating a comprehensive view of the character’s involvement in the Disney universe.</li>
+</ul>
+
+<h3 class="table-title">2. Inserting Character Data into the Database</h3>
+<p class="about-description">
+    After fetching character data, the script inserts each character into the "characters" table. For each character, associated media data (films, TV shows, and video games) are also inserted into their respective tables, linking them to the character through foreign keys. This setup creates a relational structure, enabling quick lookup and retrieval of all media associated with a given character.
+</p>
+
+<h3 class="table-title">3. Generating and Inserting Random User Data</h3>
+<p class="about-description">
+    To simulate user interaction, the script generates random user profiles using the Faker API. This includes unique email addresses and randomly generated names. These users are stored in the "users" table, allowing us to simulate a real user experience on the platform.
+</p>
+
+<h3 class="table-title">4. Simulating User Interactions with Liked Characters</h3>
+<p class="about-description">
+    In the final step, the script randomly assigns "likes" to characters by inserting entries into the "likeds" table. Each entry links a user to a character they have "liked," enabling us to showcase which characters are popular among users. This feature creates a sense of engagement and personalization within the application.
+</p>
+
+<h2 class="section-title">Database Schema</h2>
+<p class="schema-description">
+    Our database schema is designed to accommodate data from both sources, structuring it to support seamless retrieval of character details, media appearances, and user interactions.
+</p>
+
+
+    <h2 class="section-title">Database Schema</h2>
+    <p class="schema-description">
+        Our database schema is designed to accommodate data from both sources:
+    </p>
+
+    <h3 class="table-title">Characters Table</h3>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>imageURL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mickey Mouse</td>
+          <td>https://images.com/mickey.jpg</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="table-title">Films Table</h3>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>character_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>ABC Movie</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="table-title">TV Shows Table</h3>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>character_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>ABC TV Show</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="table-title">Video Games Table</h3>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>character_id</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>ABC Video Game</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="table-title">Users Table</h3>
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>email</th>
+          <th>name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>userlikedImage@gmail.com</td>
+          <td>User</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">Database ERD</h2>
+    <div class="erd-image">
+        <img src="<%= asset_path('ERDiagram.png') %>" class="img-fluid">
+    </div>
+</div>

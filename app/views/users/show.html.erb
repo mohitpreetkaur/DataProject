@@ -1,0 +1,7 @@
+<h1><%= @user.name %></h1>
+<h2>Liked Characters</h2>
+<ul>
+  <% @user.liked_characters.each do |character| %>
+    <li><a href="<%= character_path(character) %>"><%= character.name %></a></li>
+  <% end %>
+</ul>

@@ -1,0 +1,33 @@
+<div class="container mt-5 disney-theme">
+  <%= form_tag(characters_path, method: "get", class: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Characters", class: "form-input" %>
+    <%= select_tag :category, options_for_select(
+      { 'All' => 'all', 'Movies' => 'films', 'TV Shows' => 'tv_shows', 'Video Games' => 'video_games' },
+      params[:category]
+    ), include_blank: true, class: "form-input" %>
+    <%= button_tag(type: "submit", class: "btn-search") do %>
+      Search
+    <% end %>
+    <%= link_to "Reset", characters_path, class: "btn-reset" %>
+  <% end %>
+
+  <div class="character-list">
+    <% if @characters.empty? %>
+      <p class="no-characters">No characters found.</p>
+    <% else %>
+      <% @characters.each do |character| %>
+        <div class="character-card">
+          <div class="character-image">
+            <img src="<%= character.imageURL %>" alt="<%= character.name %>" class="img-fluid">
+          </div>
+          <div class="character-details">
+            <h3 class="character-name"><%= character.name %></h3>
+            <%= link_to "View", member_path(character), class: "btn-view" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
+  <%= paginate @characters, class: "pagination-controls" %>
+</div>

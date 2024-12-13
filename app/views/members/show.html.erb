@@ -1,0 +1,87 @@
+<div class="character-container mt-5">
+    <h1 class="character-title text-center mb-4"><%= @character.name %></h1>
+    
+    <div class="character-details row g-4">
+        <div class="character-image col-md-6">
+            <% if @character.imageURL.present? %>
+                <img src='<%= @character.imageURL %>' class="image-fluid rounded shadow">
+            <% else %>
+                <div class="image-placeholder text-center">
+                    No Image Available
+                </div>
+            <% end %>
+        </div>
+
+        <div class="character-info col-md-6">
+            <div class="info-card">
+                <div class="info-card-body">
+                    <h2 class="info-title">Films</h2>
+                    <ul class="info-list">
+                        <% if @films.any? %>
+                            <% @films.each do |film| %>
+                                <li class="info-item"><%= film.name %></li>
+                            <% end %>
+                        <% else %>
+                            <li class="info-item">No Data Available</li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="additional-info row g-4 mt-4">
+        <div class="col-md-6">
+            <div class="info-card">
+                <div class="info-card-body">
+                    <h2 class="info-title">TV Shows</h2>
+                    <ul class="info-list">
+                        <% if @tv_shows.any? %>
+                            <% @tv_shows.each do |tv_show| %>
+                                <li class="info-item"><%= tv_show.name %></li>
+                            <% end %>
+                        <% else %>
+                            <li class="info-item">No Data Available</li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="info-card">
+                <div class="info-card-body">
+                    <h2 class="info-title">Video Games</h2>
+                    <ul class="info-list">
+                        <% if @video_games.any? %>
+                            <% @video_games.each do |video_game| %>
+                                <li class="info-item"><%= video_game.name %></li>
+                            <% end %>
+                        <% else %>
+                            <li class="info-item">No Data Available</li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="liked-by-section row mt-4">
+        <div class="col-12">
+            <div class="info-card">
+                <div class="info-card-body">
+                    <h2 class="info-title">Liked By</h2>
+                    <ul class="info-list">
+                        <% if @liking_users.any? %>
+                            <% @liking_users.each do |user| %>
+                                <li class="info-item"><%= user.name %></li>
+                            <% end %>
+                        <% else %>
+                            <li class="info-item">No Data Available</li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
